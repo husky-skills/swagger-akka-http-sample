@@ -10,8 +10,9 @@ import com.example.akka.addoption.{AddOptionActor, AddOptionService}
 import com.example.akka.echoenum.EchoEnumService
 import com.example.akka.hello.{HelloActor, HelloService}
 import com.example.akka.swagger.SwaggerDocService
+import com.github.swagger.akka.SwaggerSite
 
-object Rest extends App with RouteConcatenation {
+object Rest extends App with RouteConcatenation with SwaggerSite{
   implicit val system = ActorSystem("akka-http-sample")
   sys.addShutdownHook(system.terminate())
 
@@ -21,8 +22,8 @@ object Rest extends App with RouteConcatenation {
   val add = system.actorOf(Props[AddActor])
   val addOption = system.actorOf(Props[AddOptionActor])
   val hello = system.actorOf(Props[HelloActor])
-  val routes =
-    cors() (new AddService(add).route ~
+  val routes = swaggerSiteRoute ~
+  cors() (new AddService(add).route ~
       new AddOptionService(addOption).route ~
       new HelloService(hello).route ~
       EchoEnumService.route ~
