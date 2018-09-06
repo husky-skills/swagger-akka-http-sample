@@ -6,7 +6,7 @@ Uses [swagger-akka-http](https://github.com/swagger-akka-http/swagger-akka-http)
 
 Test using http://petstore.swagger.io/ and replace the swagger.json with http://localhost:12345/api-docs/swagger.json
 
-The Swagger UI can be used to send sample requests.
+The Swagger UI can be used to send sample requests. Swagger UI at http://localhost:12345/swagger
 
 Note that the sample now uses swagger-akka-http 0.11.0 which has some breaking [changes](https://github.com/swagger-akka-http/swagger-akka-http#breaking-changes-in-0100).
 
